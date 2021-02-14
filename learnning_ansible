@@ -205,9 +205,17 @@ ansible all -m command -a "id"
     uid=0(root) gid=0(root) 组=0(root) 环境=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
     192.168.197.129 | CHANGED | rc=0 >>
     uid=0(root) gid=0(root) 组=0(root) 环境=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
-可以看到，我们虽然定义了remote_user=ansiblenode用户，但是我们实现了ansiblenode免密执行root权限的命令。
+可以看到，我们虽然定义了remote_user = ansiblenode用户，但是我们实现了ansiblenode免密执行root权限的命令。
 
+配置webserver，安装httpd，开启httpd服务，并在防火墙放行http服务。
+yum模块，可以使用ansible-doc yum查看具体使用参数及方法。
+ansible webserver -m yum -a "name=httpd state=latest"
+service模块，开启httpd服务。
+ansible webserver -m service -a "name=httpd state=started enabled=yes"
+firewalld模块，立即放行并永久放行http服务。
+ansible webserver -m firewalld -a "service=http state=enabled immediate=yes permanent=yes"
 
-
+配置nfsserver，安装nfs-utils，开启nfs-server服务，并在防火墙放行nfs、rpc-bind、mountd三个服务。
+ansible nfsserver
 
 
