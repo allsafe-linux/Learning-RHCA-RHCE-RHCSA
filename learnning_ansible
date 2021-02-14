@@ -215,7 +215,15 @@ ansible webserver -m service -a "name=httpd state=started enabled=yes"
 firewalld模块，立即放行并永久放行http服务。
 ansible webserver -m firewalld -a "service=http state=enabled immediate=yes permanent=yes"
 
+ansible webserver -m yum -a "name=nfs-utils state=latest"
+
 配置nfsserver，安装nfs-utils，开启nfs-server服务，并在防火墙放行nfs、rpc-bind、mountd三个服务。
-ansible nfsserver
+ansible nfsserver -m yum -a "name=nfs-utils state=latest"
+copy模块，在nfs配置文件exports中写入配置信息，注意星号跟括号之间没有空格，如果有空格到时候就挂载出错。
+ansible nfsserver -m copy -a 'content="/mnt 192.168.197.*(rw,sync,root_squash)" dest=/etc/exports'
+
+
+
+
 
 
