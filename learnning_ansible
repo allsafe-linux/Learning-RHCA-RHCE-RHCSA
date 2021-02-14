@@ -1,0 +1,42 @@
+ansible webserver -m yum -a 'name=httpd state=latest'
+192.168.197.128 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    }, 
+    "changed": true, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "Installed: apr-util-1.6.1-6.el8.x86_64", 
+        "Installed: apr-util-openssl-1.6.1-6.el8.x86_64", 
+        "Installed: httpd-2.4.37-30.module+el8.3.0+7001+0766b9e7.x86_64", 
+        "Installed: httpd-filesystem-2.4.37-30.module+el8.3.0+7001+0766b9e7.noarch", 
+        "Installed: mod_http2-1.15.7-2.module+el8.3.0+7670+8bf57d29.x86_64", 
+        "Installed: redhat-logos-httpd-81.1-1.el8.noarch", 
+        "Installed: httpd-tools-2.4.37-30.module+el8.3.0+7001+0766b9e7.x86_64", 
+        "Installed: apr-1.6.3-11.el8.x86_64", 
+        "Installed: apr-util-bdb-1.6.1-6.el8.x86_64", 
+        "Installed: mailcap-2.1.48-3.el8.noarch"
+    ]
+}
+
+ansible安装nfs-utils
+ansible nfsserver -m yum -a 'name=nfs-utils state=latest'
+192.168.197.129 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    }, 
+    "changed": true, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "Installed: python3-pyyaml-3.12-12.el8.x86_64", 
+        "Installed: keyutils-1.5.10-6.el8.x86_64", 
+        "Installed: libverto-libevent-0.3.0-5.el8.x86_64", 
+        "Installed: rpcbind-1.2.5-7.el8.x86_64", 
+        "Installed: nfs-utils-1:2.3.3-35.el8.x86_64", 
+        "Installed: quota-1:4.04-10.el8.x86_64", 
+        "Installed: gssproxy-0.8.0-16.el8.x86_64", 
+        "Installed: quota-nls-1:4.04-10.el8.noarch"
+    ]
+}
