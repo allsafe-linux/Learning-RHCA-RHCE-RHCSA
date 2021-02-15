@@ -31,54 +31,54 @@ RHCA 认证非常适合已获得红帽认证工程师（RHCE）资格，并希�
 2.DevOps、容器和 OpenShift 计划(DevOps, containers, and OpenShift program)
 容器正在改变着应用的开发、测试和部署方式，而红帽® OpenShift 容器平台正是红帽的容器处理环境。对于希望缩短应用开发周期的企业，容器是绝佳之选。不过，创建持续集成/连续交付（CI/CD）管道需要的不仅仅是容器，还需要实现自动化。DevOps 提供了一种自动化方法，它不仅能将旧应用与更新的云原生应用和基础架构进行关联，而且还可以通过快速迭代 IT 服务交付来实现同样目的。我们的 DevOps、容器和 OpenShift 的推荐方案中还包括了培训，这些培训关系着能否在当今应用需求剧增的世界中取得成功。获得以下四个证书，外加系统管理员认证列表中的一个证书，将有助于改变企业向客户交付应用的方式。
     
-红帽认证 OpenShift 管理专家;
-Red Hat Certified Specialist in OpenShift Administration exam (EX280);
-红帽认证 Ansible 自动化专家;
-Note: This exam and credential are no longer available.
-Retired - Red Hat Certified Specialist in Ansible Automation exam (EX407);
-红帽认证配置管理专家;
-Retired - Red Hat Certified Specialist in Configuration Management exam (EX405);
-红帽认证 API 管理专家;
-Red Hat Certified Specialist in API Management exam (EX240);
-红帽认证高级自动化专家：Ansible 最佳实践;
-Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447);
-红帽认证容器和 OpenShift 容器平台安全专家
-Red Hat Certified Specialist in Security: Containers and OpenShift Container Platform exam (EX425)
+    红帽认证 OpenShift 管理专家;
+    Red Hat Certified Specialist in OpenShift Administration exam (EX280);
+    红帽认证 Ansible 自动化专家;
+    Note: This exam and credential are no longer available.
+    Retired - Red Hat Certified Specialist in Ansible Automation exam (EX407);
+    红帽认证配置管理专家;
+    Retired - Red Hat Certified Specialist in Configuration Management exam (EX405);
+    红帽认证 API 管理专家;
+    Red Hat Certified Specialist in API Management exam (EX240);
+    红帽认证高级自动化专家：Ansible 最佳实践;
+    Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447);
+    红帽认证容器和 OpenShift 容器平台安全专家
+    Red Hat Certified Specialist in Security: Containers and OpenShift Container Platform exam (EX425)
     
 3.电信云计划(Telco Cloud program)
 软件定义的网络（SDN）和网络功能虚拟化（NFV）正在改变电信行业，以基于虚拟化的灵活解决方案取代了较旧的、基于硬件的不灵活解决方案。红帽 OpenStack 平台和其他红帽技术是当今和未来电信行业必不可少的构建基础。必须获得以下认证，来验证当今的电信 IT 专业人员所需的技能和知识。
     
-红帽 OpenStack 红帽认证系统管理员;
-Red Hat Certified System Administrator in Red Hat OpenStack exam (EX210);
-红帽 OpenStack 红帽认证工程师;
-Red Hat Certified Engineer in Red Hat OpenStack exam (EX310);
-红帽认证 Ceph 存储管理专家;
-Red Hat Certified Specialist in Ceph Storage Administration(这个页面不见了);
-红帽认证 Ansible 自动化专家;
-Red Hat Certified Specialist in Ansible Automation exam (EX407);
-红帽认证配置管理专家;
-Retired - Red Hat Certified Specialist in Configuration Management exam (EX405);
-红帽认证高级自动化专家：Ansible 最佳实践
-Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447)
+    红帽 OpenStack 红帽认证系统管理员;
+    Red Hat Certified System Administrator in Red Hat OpenStack exam (EX210);
+    红帽 OpenStack 红帽认证工程师;
+    Red Hat Certified Engineer in Red Hat OpenStack exam (EX310);
+    红帽认证 Ceph 存储管理专家;
+    Red Hat Certified Specialist in Ceph Storage Administration(这个页面不见了);
+    红帽认证 Ansible 自动化专家;
+    Red Hat Certified Specialist in Ansible Automation exam (EX407);
+    红帽认证配置管理专家;
+    Retired - Red Hat Certified Specialist in Configuration Management exam (EX405);
+    红帽认证高级自动化专家：Ansible 最佳实践
+    Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447)
     
 4.精通 Linux 计划
 红帽® 企业 Linux® 的可靠性、可扩展性、性能和可管理性构成了诸多红帽技术的核心。我们不会轻易使用“精通”一词——它代表了深入研究并专注于 Linux。请在以下认证中选择五项：
     
-红帽认证 Linux 诊断和故障排除专家;
-Red Hat Certified Specialist in Linux Diagnostics and Troubleshooting exam (EX342);
-红帽认证 Linux 性能调优专家;
-Red Hat Certified Specialist in Linux Performance Tuning exam (EX442);
-红帽认证服务器安全与加固专家;
-Retired - Red Hat Certified Specialist in Server Security and Hardening exam (EX413);
-红帽认证身份管理专家;
-Red Hat Certified Specialist in Identity Management exam (EX362)
-红帽认证高可用性集群专家;
-Red Hat Certified Specialist in High Availability Clustering exam (EX436)
-红帽认证部署和系统管理专家;
-Red Hat Certified Specialist in Deployment and Systems Management exam (EX403)
-红帽认证高级自动化专家：Ansible 最佳实践;
-Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447)
-红帽认证 Linux 安全专家
-Red Hat Certified Specialist in Security: Linux exam (EX415)
+    红帽认证 Linux 诊断和故障排除专家;
+    Red Hat Certified Specialist in Linux Diagnostics and Troubleshooting exam (EX342);
+    红帽认证 Linux 性能调优专家;
+    Red Hat Certified Specialist in Linux Performance Tuning exam (EX442);
+    红帽认证服务器安全与加固专家;
+    Retired - Red Hat Certified Specialist in Server Security and Hardening exam (EX413);
+    红帽认证身份管理专家;
+    Red Hat Certified Specialist in Identity Management exam (EX362)
+    红帽认证高可用性集群专家;
+    Red Hat Certified Specialist in High Availability Clustering exam (EX436)
+    红帽认证部署和系统管理专家;
+    Red Hat Certified Specialist in Deployment and Systems Management exam (EX403)
+    红帽认证高级自动化专家：Ansible 最佳实践;
+    Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447)
+    红帽认证 Linux 安全专家
+    Red Hat Certified Specialist in Security: Linux exam (EX415)
     
 以上就是官网的RHCA考试总体介绍
