@@ -84,3 +84,5 @@ RHCE 可以自由选择基础架构 RHCA 列表中的任意认证组合，而取
     Red Hat Certified Specialist in Advanced Automation: Ansible Best Practices (EX447)
     红帽认证 Linux 安全专家
     Red Hat Certified Specialist in Security: Linux exam (EX415)
+    
+    以上就是官网的RHCA考试总体介绍
