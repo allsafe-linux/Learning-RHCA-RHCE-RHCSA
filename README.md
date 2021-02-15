@@ -15,18 +15,18 @@ RHCA 认证非常适合已获得红帽认证工程师（RHCE）资格，并希�
 我们相信开放混合云代表着企业计算的现在和未来。对敏捷性、灵活性和成本控制的需求，强调了多种备选方案的重要性。
 要把企业以最符合业务要求的方式融入云端，需要获得以下认证中的五项：
     
-  红帽认证混合云管理专家;
-  Red Hat Certified Specialist in Hybrid Cloud Management exam (EX220);
-  红帽认证 Gluster 存储管理专家;
-  Red Hat Certified Specialist in Gluster Storage Administration exam (EX236);
-  红帽认证虚拟化专家;
-  Red Hat Certified Specialist in Virtualization Exam (EX318);
-  红帽认证 OpenShift 管理专家;
-  Red Hat Certified Specialist in OpenShift Administration exam (EX280);
-  红帽 OpenStack 红帽认证系统管理员;
-  Red Hat Certified Engineer in Red Hat OpenStack exam (EX310);
-  红帽认证部署和系统管理专家;
-  Red Hat Certified Specialist in Deployment and Systems Management exam (EX403)
+    红帽认证混合云管理专家;
+    Red Hat Certified Specialist in Hybrid Cloud Management exam (EX220);
+    红帽认证 Gluster 存储管理专家;
+    Red Hat Certified Specialist in Gluster Storage Administration exam (EX236);
+    红帽认证虚拟化专家;
+    Red Hat Certified Specialist in Virtualization Exam (EX318);
+    红帽认证 OpenShift 管理专家;
+    Red Hat Certified Specialist in OpenShift Administration exam (EX280);
+    红帽 OpenStack 红帽认证系统管理员;
+    Red Hat Certified Engineer in Red Hat OpenStack exam (EX310);
+    红帽认证部署和系统管理专家;
+    Red Hat Certified Specialist in Deployment and Systems Management exam (EX403)
     
 2.DevOps、容器和 OpenShift 计划(DevOps, containers, and OpenShift program)
 容器正在改变着应用的开发、测试和部署方式，而红帽® OpenShift 容器平台正是红帽的容器处理环境。对于希望缩短应用开发周期的企业，容器是绝佳之选。不过，创建持续集成/连续交付（CI/CD）管道需要的不仅仅是容器，还需要实现自动化。DevOps 提供了一种自动化方法，它不仅能将旧应用与更新的云原生应用和基础架构进行关联，而且还可以通过快速迭代 IT 服务交付来实现同样目的。我们的 DevOps、容器和 OpenShift 的推荐方案中还包括了培训，这些培训关系着能否在当今应用需求剧增的世界中取得成功。获得以下四个证书，外加系统管理员认证列表中的一个证书，将有助于改变企业向客户交付应用的方式。
