@@ -118,6 +118,7 @@ sudo make install
 
 
 16.手动编译安装新的Linux Kernel
+sudo yum -y install ncurses-devel openssl-devel
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.2.tar.xz
 xz -d linux-5.14.2.tar.xz
 tar -xf linux-5.14.2.tar
@@ -133,6 +134,7 @@ sudo rm -f /etc/grub2.cfg
 sudo cp /boot/grub2/grub.cfg /etc/grub2.cfg
 reboot
 查看内核版本 uname -a
+# 查看系统启动的内核菜单 sudo awk -F\' '$1=="menuentry "{print i++":" $2}' /etc/grub2.cfg
 
 怎么删除呢？？？
 
@@ -156,5 +158,18 @@ sudo dnf install mesa-dri-drivers.i686 mesa-libGL.i686 nss.i686
 双击桌面steam图标即可运行，但是在左上角任务栏没有显示steam图标，在RHEL7.9里面是正常的。
 我的显卡是丽台1060的，在nvidia官网下载的linux驱动，在这一步还没安装哈。
 
+18.修改ssh登陆的端口号为2222
+sudo vim /etc/ssh/sshd_config
+  # Port 22
+  Port 2222
 
+  设置root用户无法通过ssh登陆 PermitRootLogin no
+  设置公钥存放的文件，可以添加多个公钥文件 AuthorizedKeysFile      .ssh/authorized_keys
+  
+  设置客户端每隔60秒唤醒下，永远不让ssh用户登陆超时
+  #ClientAliveInterval 0
+  ClientAliveInterval 60
+修改selinux，允许2222端口作为ssh端口
+sudo semanage port -l | grep ssh
+sudo semanage port -a -t ssh_port_t -p tcp 2222
 
