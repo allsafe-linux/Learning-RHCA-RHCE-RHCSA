@@ -173,3 +173,7 @@ sudo vim /etc/ssh/sshd_config
 sudo semanage port -l | grep ssh
 sudo semanage port -a -t ssh_port_t -p tcp 2222
 
+19.编译安装新版本的gcc
+wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-4.9.4/gcc-4.9.4.tar.gz
+
+
