@@ -116,7 +116,6 @@ sudo make install
 安装编译号的8188gu驱动 sudo modprobe 8188gu
 退出cdrom sudo eject /dev/cdrom0
 
-
 16.手动编译安装新的Linux Kernel
 sudo yum -y install ncurses-devel openssl-devel
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.2.tar.xz
@@ -175,5 +174,6 @@ sudo semanage port -a -t ssh_port_t -p tcp 2222
 
 19.编译安装新版本的gcc
 wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-4.9.4/gcc-4.9.4.tar.gz
+tar -xzvf gcc-4.9.4.tar.gz
 
 
