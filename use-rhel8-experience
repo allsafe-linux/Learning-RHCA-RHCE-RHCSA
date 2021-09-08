@@ -1,0 +1,5 @@
+安装RHEL8.4
+
+sudo visudo
+
+sudo yum update -y
