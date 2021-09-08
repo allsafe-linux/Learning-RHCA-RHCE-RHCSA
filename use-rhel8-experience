@@ -3,6 +3,8 @@
 sudo nmcli conn show
 启用有线网络连接
 sudo nmcli conn up sudo nmcli conn up enp2s0f0
+查看网络连接信息
+ip addr
 
 2.设置不需要输入密码即可执行root权限命令
 sudo visudo
@@ -43,9 +45,116 @@ sudo yum install vlc
 给磁盘分区 sudo fdisk /dev/sdb, 就把整个磁盘划分成一个区
 格式化磁盘为xfs格式 sudo mkfs.xfs /dev/sdb1
 查看刚才分区的sdb1的uuid值 sudo blkid -s UUID /dev/sdb1
+  4种方式查看磁盘uuid
+  ls -l /dev/disk/by-uuid
+  blkid -s UUID /dev/sda1
+  tune2fs -l /dev/sda1 |grep 'UUID'
+  dumpe2fs /dev/sda1 |grep 'UUID'
 创建data目录 sudo mkdir /data
 设置自动挂载
 sudo vim /etc/fstab
   添加 UUID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /data xfs     defaults        0 0
 挂载磁盘 sudo mount -a
+更改磁盘属组 sudo chown -R rhel:rhel /data/
+
+8.查看磁盘分区结构
+lsblk
+NAME          MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda             8:0    1 256.2G  0 disk 
+├─sda1          8:1    1     1M  0 part 
+├─sda2          8:2    1     1G  0 part /boot
+└─sda3          8:3    1 255.2G  0 part 
+  ├─rhel-root 253:0    0   119G  0 lvm  /
+  ├─rhel-swap 253:1    0  15.8G  0 lvm  [SWAP]
+  └─rhel-home 253:2    0 120.4G  0 lvm  /home
+sdb             8:16   1   3.7T  0 disk 
+└─sdb1          8:17   1   3.7T  0 part /data
+
+9.安装realvnc的vnc-viewer
+sudo yum remove tigervnc
+sudo yum install VNC-Viewer-6.21.406-Linux-x64.rpm
+
+10.设置系统时区
+先查看下亚洲 sudo timedatectl list-timezones | grep Asia
+设置系统时区 sudo timedatectl set-timezone Asia/Shanghai
+
+11.selinux
+查看 getenforce
+
+12.编译安装deb转换为rpm的包转换命令
+在 https://sourceforge.net/projects/alien-pkg-convert/files/ 下载源码
+xz -d alien_8.95.5.tar.xz
+tar -xvf alien_8.95.5.tar
+cd alien-8.95.5/
+sudo yum install perl
+sudo perl Makefile.PL
+sudo make
+sudo make install
+
+13.安装rarlinux
+tar -xzvf rarlinux-x64-6.0.2.tar.gz
+cd rar/
+./configure
+sudo make -j 4
+sudo make install
+
+14.安装vscode
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo dnf check-update
+sudo yum update -y
+sudo dnf install code
+
+15.安装tp-link的usb无线网卡驱动，淘宝卖39元，windows10下免驱的，但是我这边编译安装后WiFi还是没法用
+查看无线网卡ID lsusb
+  github搜索这个ID有没有对应的型号
+git clone https://github.com/McMCCRU/rtl8188gu.git
+cd rtl8188gu/
+make
+sudo make install
+删除以前安装的8188gu驱动 sudo modprobe -r 8188gu
+安装编译号的8188gu驱动 sudo modprobe 8188gu
+退出cdrom sudo eject /dev/cdrom0
+
+
+16.手动编译安装新的Linux Kernel
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.14.2.tar.xz
+xz -d linux-5.14.2.tar.xz
+tar -xf linux-5.14.2.tar
+cd linux-5.14.2/
+cp /boot/config-4.18.0-305.12.1.el8_4.x86_64 .config
+设置你的编译参数（我自己就加入了NTFS读写，删掉了一些不用的驱动，删掉AMD处理器支持） make menuconfig
+make bzImage
+用6个线程进行模块编译 make modules -j 6
+sudo make modules_install
+sudo make install
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo rm -f /etc/grub2.cfg
+sudo cp /boot/grub2/grub.cfg /etc/grub2.cfg
+reboot
+查看内核版本 uname -a
+
+怎么删除呢？？？
+
+cd /boot
+sudo rm -rf *-5.14.2
+sudo rm -rf initramfs-5.14.2.img
+sudo grub2-mkconfig -o grub2/grub.cfg
+sudo rm -f /etc/grub2.cfg
+sudo cp grub2/grub.cfg /etc/grub2.cfg
+sudo rm -f loader/entries/aabbaa63ca5e4d3783bfdaef5f6a1500-5.14.2.conf
+reboot
+
+17.安装Steam
+wget http://repo.steampowered.com/steam/archive/stable/steam_latest.deb
+把deb包转换为rpm包 alien -r steam_latest.deb 得到 steam-launcher-1.0.0.71-2.noarch.rpm
+sudo yum install steam-launcher-1.0.0.71-2.noarch.rpm
+sudo dnf install json-glib.i686 libdbusmenu.i686 fontconfig.i686 freetype.i686 glib2.i686 gtk2.i686 pango.i686 glibc.i686
+sudo dnf install libdrm.i686
+sudo dnf install alsa-lib.i686 alsa-plugins-pulseaudio.i686 libXScrnSaver.i686 libXtst.i686 libatomic.i686 libcurl.i686 libdbusmenu-gtk3.i686 libpng12.i686 libvdpau.i686
+sudo dnf install mesa-dri-drivers.i686 mesa-libGL.i686 nss.i686
+双击桌面steam图标即可运行，但是在左上角任务栏没有显示steam图标，在RHEL7.9里面是正常的。
+我的显卡是丽台1060的，在nvidia官网下载的linux驱动，在这一步还没安装哈。
+
+
 
