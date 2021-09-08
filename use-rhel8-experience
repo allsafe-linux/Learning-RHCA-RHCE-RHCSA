@@ -1,5 +1,15 @@
-安装RHEL8.4
+1.安装RHEL8.4
 
+2.设置不需要输入密码即可执行root权限命令
 sudo visudo
 
+  ## Allows people in group wheel to run all commands
+  # %wheel        ALL=(ALL)       ALL
+
+  ## Same thing without a password
+  %wheel  ALL=(ALL)       NOPASSWD: ALL
+
+3.更新
 sudo yum update -y
+
+
