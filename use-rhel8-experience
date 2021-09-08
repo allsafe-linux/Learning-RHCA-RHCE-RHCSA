@@ -1,4 +1,8 @@
 1.安装RHEL8.4
+查看网卡信息
+sudo nmcli conn show
+启用有线网络连接
+sudo nmcli conn up sudo nmcli conn up enp2s0f0
 
 2.设置不需要输入密码即可执行root权限命令
 sudo visudo
@@ -12,4 +16,36 @@ sudo visudo
 3.更新
 sudo yum update -y
 
+4.安装源
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-$(arch)-rpms"
+sudo yum install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+sudo yum install https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+
+5.查看一下启用了哪些软件源
+sudo yum repolist
+Updating Subscription Management repositories.
+仓库 id                                  仓库名称
+code                                     Visual Studio Code
+codeready-builder-for-rhel-8-x86_64-rpms Red Hat CodeReady Linux Builder for RHEL 8 x86_64 (RPMs)
+epel                                     Extra Packages for Enterprise Linux 8 - x86_64
+epel-modular                             Extra Packages for Enterprise Linux Modular 8 - x86_64
+rhel-8-for-x86_64-appstream-rpms         Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)
+rhel-8-for-x86_64-baseos-rpms            Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)
+rpmfusion-free-updates                   RPM Fusion for EL 8 - Free - Updates
+rpmfusion-nonfree-updates                RPM Fusion for EL 8 - Nonfree - Updates
+
+6.安装vlc播放器
+sudo yum install vlc
+
+7.把另一块硬盘挂载到/data
+查看磁盘信息 fdisk -l
+给磁盘分区 sudo fdisk /dev/sdb, 就把整个磁盘划分成一个区
+格式化磁盘为xfs格式 sudo mkfs.xfs /dev/sdb1
+查看刚才分区的sdb1的uuid值 sudo blkid -s UUID /dev/sdb1
+创建data目录 sudo mkdir /data
+设置自动挂载
+sudo vim /etc/fstab
+  添加 UUID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /data xfs     defaults        0 0
+挂载磁盘 sudo mount -a
 
