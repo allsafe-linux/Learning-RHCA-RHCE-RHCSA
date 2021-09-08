@@ -1,4 +1,4 @@
-# Learnning-RHCA-RHCE-RHCSA（Now is RHCA）
+# Learning-RHCA-RHCE-RHCSA（Now is RHCA）
 Self Study Red Hat Enterprise Linux
 
   
