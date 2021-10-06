@@ -188,7 +188,10 @@ sudo make install
 编译源码所需的依赖，wine官方有张表，编译提示缺什么就从表上去找对应名词是哪个软件包，安上即可
 https://wiki.winehq.org/Building_Wine#Satisfying_Build_Dependencies
 
-安装32位库文件
+安装32位库文件和相关依赖
 sudo yum install freetype freetype.i686 freetype-devel freetype-devel.i686
 sudo yum install glibc-devel.i686 libstdc++-devel.i686 
 
+安装64位库文件和相关依赖
+sudo yum install freetype freetype.i686 freetype-devel freetype-devel.i686
+sudo yum install glibc-devel.i686 libstdc++-devel.i686 
