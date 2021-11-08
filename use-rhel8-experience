@@ -15,8 +15,12 @@ sudo visudo
   ## Same thing without a password
   %wheel  ALL=(ALL)       NOPASSWD: ALL
 
-3.更新
+3.更新并安装“开发工具”组
 sudo yum update -y
+
+sudo yum group install '开发工具'
+或者
+sudo yum group install 'Development Tools'
 
 4.安装源
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
@@ -194,4 +198,38 @@ sudo yum install glibc-devel.i686 libstdc++-devel.i686
 
 安装64位库文件和相关依赖
 sudo yum install freetype freetype.i686 freetype-devel freetype-devel.i686
-sudo yum install glibc-devel.i686 libstdc++-devel.i686 
+sudo yum install glibc-devel.i686 libstdc++-devel.i686
+
+21.保持ssh长连接
+sudo vim /etc/ssh/sshd_config
+修改如下：把原来的井号去掉即可，我是用yy复制一行然后按p粘贴到下一行去
+  ClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接
+  ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
+重启ssh server
+sudo systemctl reload sshd
+
+22.安装httpd mod_ssl
+sudo yum install httpd mod_ssl
+
+23.安装zip和rarlinux
+sudo yum install zip
+wget https://www.rarlab.com/rar/rarlinux-x64-6.0.2.tar.gz
+tar -zxvf rarlinux-x64-6.0.2.tar.gz
+cd rar
+sudo make install
+  mkdir -p /usr/local/bin
+  mkdir -p /usr/local/lib
+  cp rar unrar /usr/local/bin
+  cp rarfiles.lst /etc
+  cp default.sfx /usr/local/lib
+
+24.安装php7.4和mariadb10.5（比较简单粗暴的安装方式）
+sudo yum module enable php:7.4
+sudo yum module enable mariadb:10.5
+查看下是否启用我们需要安装的版本
+sudo yum module list php
+sudo yum module list mariadb
+进行安装
+sudo yum install php* mariadb*
+
+25.
