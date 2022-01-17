@@ -21,3 +21,14 @@ sudo yum update -y
 sudo yum group install '开发工具'
 或者
 sudo yum group install 'Development Tools'
+
+4.使用EPEL7的源
+sudo subscription-manager repos --enable rhel-*-optional-rpms \
+                                --enable rhel-*-extras-rpms \
+                                --enable rhel-ha-for-rhel-*-server-rpms
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+5.编译安装Mariadb Server 10.5.13
+wget https://mirrors.aliyun.com/mariadb//mariadb-10.5.13/source/mariadb-10.5.13.tar.gz
+tar -xzvf mariadb-10.5.13.tar.gz
+
