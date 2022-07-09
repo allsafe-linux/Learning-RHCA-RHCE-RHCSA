@@ -22,12 +22,12 @@ dnf config-manager --set-enabled powertools
 dnf install epel-release epel-next-release
 
 yum repolist
-repo id            repo name
-appstream          CentOS Linux 8 - AppStream
-baseos             CentOS Linux 8 - BaseOS
-epel               Extra Packages for Enterprise Linux 8 - aarch64
-epel-modular       Extra Packages for Enterprise Linux Modular 8 - aarch64
-epel-next          Extra Packages for Enterprise Linux 8 - Next - aarch64
-extras             CentOS Linux 8 - Extras
-powertools         CentOS Linux 8 - PowerTools
+  repo id            repo name
+  appstream          CentOS Linux 8 - AppStream
+  baseos             CentOS Linux 8 - BaseOS
+  epel               Extra Packages for Enterprise Linux 8 - aarch64
+  epel-modular       Extra Packages for Enterprise Linux Modular 8 - aarch64
+  epel-next          Extra Packages for Enterprise Linux 8 - Next - aarch64
+  extras             CentOS Linux 8 - Extras
+  powertools         CentOS Linux 8 - PowerTools
 
