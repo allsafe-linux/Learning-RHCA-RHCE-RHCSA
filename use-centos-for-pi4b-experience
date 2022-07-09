@@ -31,3 +31,23 @@ yum repolist
   extras             CentOS Linux 8 - Extras
   powertools         CentOS Linux 8 - PowerTools
 
+6.添加一个名为rhel的用户，并加入wheel组，设置个密码，实现免密sudo命令，免密ssh登录
+useradd rhel
+passwd rhel 提示你输入两遍密码
+usermod -aG wheel rhel
+id rhel 查看rhel账户属组
+  uid=1000(rhel) gid=1000(rhel) groups=1000(rhel),10(wheel)
+su - rhel 切换为rhel账户登录
+sudo yum update 在rhel用户下尝试yum update更新操作，将会提示你输入rhel用户的密码
+sudo visudo 编辑权限实现sudo命令无需输入密码
+  ## Allows people in group wheel to run all commands
+  %wheel  ALL=(ALL)       ALL
+
+  ## Same thing without a password
+  # %wheel        ALL=(ALL)       NOPASSWD: ALL
+修改为：
+  ## Allows people in group wheel to run all commands
+  # %wheel        ALL=(ALL)       ALL
+
+  ## Same thing without a password
+  %wheel  ALL=(ALL)       NOPASSWD: ALL
