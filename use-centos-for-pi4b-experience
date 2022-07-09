@@ -1,0 +1,33 @@
+1.下载64bit的CentOS镜像，我用的是stream版本的镜像
+https://people.centos.org/pgreco/CentOS-Userland-8-stream-aarch64-RaspberryPI-Minimal-4/CentOS-Userland-8-stream-aarch64-RaspberryPI-Minimal-4-sda.raw.xz
+https://people.centos.org/pgreco/CentOS-Userland-8-aarch64-RaspberryPI-Minimal-4/CentOS-Userland-8-aarch64-RaspberryPI-Minimal-4-sda.raw.xz
+
+2.开机，给树莓派4B插上网线，ssh登录
+用户名/密码：root/centos
+
+3.扩展根分区，使用SD卡所有容量
+rootfs-expand
+
+4.yum update -y
+提示Error: Failed to download metadata for repo 'AppStream': Cannot prepare internal mirrorlist: No URLs in mirrorlist
+我们修改下repo文件内容
+cd /etc/yum.repos.d/
+sed -i 's/mirrorlist/#mirrorlist/g' CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' CentOS-*
+yum clean all
+yum makecache
+
+5.安装EPEL8的源
+dnf config-manager --set-enabled powertools
+dnf install epel-release epel-next-release
+
+yum repolist
+repo id            repo name
+appstream          CentOS Linux 8 - AppStream
+baseos             CentOS Linux 8 - BaseOS
+epel               Extra Packages for Enterprise Linux 8 - aarch64
+epel-modular       Extra Packages for Enterprise Linux Modular 8 - aarch64
+epel-next          Extra Packages for Enterprise Linux 8 - Next - aarch64
+extras             CentOS Linux 8 - Extras
+powertools         CentOS Linux 8 - PowerTools
+
