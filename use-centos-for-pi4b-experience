@@ -51,3 +51,54 @@ sudo visudo 编辑权限实现sudo命令无需输入密码
 
   ## Same thing without a password
   %wheel  ALL=(ALL)       NOPASSWD: ALL
+我用的是SecureCRT软件来ssh远程登录到树莓派操作的，所以我上传ssh-key，禁用centos的ssh用户使用密码登录，并且禁止root用户可以ssh远程登录
+/home/rhel
+mkdir .ssh
+chmod 700 .ssh 赋予权限
+cd .ssh
+vi authorized_keys 这里我把本机生成的公钥复制粘贴进这个文件中
+chmod 600 authorized_keys 赋予权限
+sudo systemctl restart sshd
+重启ssh服务后试试用公私钥验证的模式登录到树莓派吧
+接下来禁止使用密码远程登录，只能通过公私钥验证的方式进行登录，并更改ssh服务所在的端口号为1234
+首先，先安装vim编辑器
+sudo yum install vim
+sudo vim /etc/sshd/ssh_config
+  Port 1234
+  PermitRootLogin no
+  PasswordAuthentication no
+  设置客户端每隔60秒唤醒下，永远不让ssh用户登陆超时
+  #ClientAliveInterval 0
+  ClientAliveInterval 60
+修改selinux，允许1234端口作为ssh端口
+sudo semanage port -l | grep ssh
+sudo semanage port -a -t ssh_port_t -p tcp 1234
+这边会提示没有semanage这个命令，我们用yum provides命令来定位需要安装哪一个软件包
+sudo yum provides semanage
+  提示我需要安装policycoreutils-python-utils-2.9-16.el8.noarch
+sudo yum install policycoreutils-python-utils-2.9-16.el8.noarch
+防火墙放行1234端口，不然重启后树莓派就连不上了
+sudo firewall-cmd --add-port=2222/tcp --permanent
+重启树莓派
+设置下hostname
+sudo hostnamectl set-hostname xxx.xxx.xxx
+hostname
+
+7.添加一个额外的源
+Installing Free and Nonfree Repositories
+安装wget软件
+sudo yum install wget
+wget https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+wget https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+sudo yum install ./rpmfusion-free-release-8.noarch.rpm ./rpmfusion-nonfree-release-8.noarch.rpm
+sudo yum clean all
+sudo yum makecache
+添加了这些源后，编译软件包，安装最新版本的nginx httpd/apache php mariadb wordpress等就够用了，采用编译方式安装软件包也都够用
+sudo yum list httpd mod_ssl nginx php mariadb
+  Last metadata expiration check: 0:15:57 ago on Sat 09 Jul 2022 05:08:02 PM UTC.
+  Available Packages
+  httpd.aarch64          2.4.37-43.module_el8.5.0+1022+b541f3b1          appstream
+  mariadb.aarch64        3:10.3.28-1.module_el8.3.0+757+d382997d         appstream
+  mod_ssl.aarch64        1:2.4.37-43.module_el8.5.0+1022+b541f3b1        appstream
+  nginx.aarch64          1:1.14.1-9.module_el8.0.0+184+e34fea82          appstream
+  php.aarch64            7.2.24-1.module_el8.2.0+313+b04d0a66            appstream
