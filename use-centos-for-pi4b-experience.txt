@@ -102,3 +102,49 @@ sudo yum list httpd mod_ssl nginx php mariadb
   mod_ssl.aarch64        1:2.4.37-43.module_el8.5.0+1022+b541f3b1        appstream
   nginx.aarch64          1:1.14.1-9.module_el8.0.0+184+e34fea82          appstream
   php.aarch64            7.2.24-1.module_el8.2.0+313+b04d0a66            appstream
+7.安装ansible
+在红帽官网找到Red Hat Enterprise Linux for ARM 64 的软件包 （用于 aarch64 的版本 8）
+在软件包中搜索下载3个包：
+python38-resolvelib-0.5.4-5.el8.noarch.rpm
+sshpass-1.09-4.el8.aarch64.rpm
+ansible-core-2.12.2-3.1.el8.aarch64.rpm
+用WinSCP软件，把这3个包上传到你树莓派用户的根目录下进行安装
+sudo yum install ./python38-resolvelib-0.5.4-5.el8.noarch.rpm ./sshpass-1.09-4.el8.aarch64.rpm ./ansible-core-2.12.2-3.1.el8.aarch64.rpm
+提示如下： 
+  Installing:
+  ansible-core
+  python38-resolvelib
+  sshpass
+  Installing dependencies:
+  python38
+  python38-asn1crypto
+  python38-babel
+  python38-cffi
+  python38-cryptography
+  python38-idna
+  python38-jinja2
+  python38-libs
+  python38-markupsafe
+  python38-pip-wheel
+  python38-ply
+  python38-pycparser
+  python38-pytz
+  python38-pyyaml
+  python38-setuptools
+  python38-setuptools-wheel
+  python38-six
+  Installing weak dependencies:
+  python38-pip
+  Enabling module streams:
+  python38
+ansible --version
+  ansible [core 2.12.2]
+    config file = /etc/ansible/ansible.cfg
+    configured module search path = ['/home/rhel/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+    ansible python module location = /usr/lib/python3.8/site-packages/ansible
+    ansible collection location = /home/rhel/.ansible/collections:/usr/share/ansible/collections
+    executable location = /usr/bin/ansible
+    python version = 3.8.8 (default, Aug 25 2021, 16:18:04) [GCC 8.5.0 20210514 (Red Hat 8.5.0-3)]
+    jinja version = 2.10.3
+    libyaml = True
+8.
