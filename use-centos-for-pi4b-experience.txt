@@ -147,4 +147,6 @@ ansible --version
     python version = 3.8.8 (default, Aug 25 2021, 16:18:04) [GCC 8.5.0 20210514 (Red Hat 8.5.0-3)]
     jinja version = 2.10.3
     libyaml = True
-8.
+8.sed命令使用
+关闭一个不用的软件源
+sed -i "s/enabled=1/enabled=0/g" epel.repo
