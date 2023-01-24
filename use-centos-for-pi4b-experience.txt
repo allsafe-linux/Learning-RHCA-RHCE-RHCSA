@@ -150,3 +150,31 @@ ansible --version
 8.sed命令使用
 关闭一个不用的软件源
 sed -i "s/enabled=1/enabled=0/g" epel.repo
+
+9.新的CentOS-9-Stream网口配置文件目录改为/etc/NetworkManager/system-connections/
+例如我这个目录下用nmcli命令配置网口后，自动生成了eth0.nmconnection文件
+nmcli con mod eth0 ipv4.addresses 10.65.238.201/24 ipv4.gateway 10.65.238.1 ipv4.method manual ipv4.dns "8.8.8.8,4.4.4.4"
+删除自动生成的Wired connection 1
+nmcli con del Wired\ connection\ 1
+启用eth0
+nmcli con up eth0
+
+配置样例如下：
+[connection]
+id=eth0
+uuid=xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+type=ethernet
+interface-name=eth0
+
+[ethernet]
+
+[ipv4]
+address1=10.65.238.201/24,10.65.238.1
+dns=8.8.8.8;4.4.4.4;
+method=manual
+
+[ipv6]
+addr-gen-mode=default
+method=auto
+
+[proxy]
